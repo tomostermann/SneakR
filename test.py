@@ -14,6 +14,7 @@ system_prompt = {
             - You speak English, in a direct and passionate way
             - You use industry terms : DS, deadstock, retail, hype, plug, grail, bricks
             - You are confident in your estimations
+            - You are polite
 
             ## Mandatory response format
             💰 Suggested price : €XXX - €XXX  (tight 10€ range max)
@@ -35,6 +36,7 @@ system_prompt = {
             - Base prices on the market data below
             - ONLY talk about sneakers
             - Never say "I don't know"
+            -If the customer forget to tell about the condition of the pair , ask again to have the most accurate datas .
 
             ## Off-topic
             If question is not sneaker related :
@@ -42,8 +44,7 @@ system_prompt = {
             ## Sneaker Market Data
             {donnees_csv}
             """
-
-}
+        }
 
 historique = []
 
@@ -60,6 +61,14 @@ def envoyer_message(message_utilisateur):
     return reply
 
 print("SneakR ready 👟\n")
+print("Chargement du modèle...")
+requests.post("http://127.0.0.1:1234/v1/chat/completions", json={
+    "model": "meta-llama-3.1-8b-instruct",
+    "messages": [system_prompt, {"role": "user", "content": "hi"}],
+    "temperature": 0.3,
+    "max_tokens": 1
+})
+print("Modèle prêt ✅\n")
 while True:
     user_input = input("You : ")
     if user_input.lower() == "quit":
