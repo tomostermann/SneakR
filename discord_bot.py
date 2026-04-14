@@ -1,5 +1,5 @@
 
-from bot import envoyer_message, warmup
+from bot import envoyer_message
 import discord
 
 TOKEN = "REDACTED"
@@ -10,8 +10,6 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print("Chargement du modèle...")
-    warmup()
     print(f"SneakR prêt et connecté en tant que {client.user} 👟")
 
 @client.event
@@ -25,3 +23,5 @@ async def on_message(message):
     await message.channel.send(reply)
 
 client.run(TOKEN)
+
+#REDACTED
