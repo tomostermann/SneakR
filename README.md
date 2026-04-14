@@ -20,27 +20,27 @@ Our chatbot, SneakR, makes it easy for all retailers to sell their shoes at fair
 
 ## ⚖️ Ethical Impact Assessment
 
-#### ELIZA Effect
+### 🙁 ELIZA Effect
 
 Users may over-trust the chatbot's price suggestions, treating them as expert human advice rather than data-driven estimates. SneakR must clearly communicate its algorithmic nature at every interaction and frame suggestions as market-based ranges, not verdicts.
 
-#### User Dependency
+### 🤔 User Dependency
 
 Frequent users may stop developing their own pricing instincts. To counter this, each suggestion should include a brief explanation of the reasoning — so users learn from the tool rather than just rely on it.
 
-#### Chatbot Psychosis
+### 🧠 Chatbot Psychosis
 
 Some users may anthropomorphise SneakR, becoming emotionally attached to its suggestions or, conversely, rejecting them entirely. The interface should use neutral, factual language and avoid any human-like persona.
 
-#### Privacy
+### 🛡️ Privacy
 
 The chatbot collects data on owned models, selling habits, and condition descriptions — all potentially sensitive. SneakR must comply with GDPR: explicit consent, data minimisation, and a clear, accessible privacy policy at every step.
 
-#### GDPR
+### 📝 GDPR
 
 SneakR only collects data strictly necessary for the service to function (model, size, condition of the pair). All collection requires explicit user consent, in compliance with European GDPR regulation.
 
-#### Data anonymisation
+### 🥸 Data anonymisation
 
 Data used to train and improve the pricing model is systematically anonymised and aggregated. No individually identifiable data should be reconstructable from the training datasets.
 
