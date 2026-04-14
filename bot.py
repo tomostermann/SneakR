@@ -6,6 +6,8 @@ import pandas as pd
 df = pd.read_csv("top20sneakers.csv")
 donnees_csv = df.to_csv(index=False)
 
+
+
 system_prompt = {
             "role": "system",
 
@@ -21,8 +23,11 @@ system_prompt = {
 
             ## Mandatory response format
             💰 Suggested price : €XXX - €XXX  (tight 10€ range max)
+
             📏 Size premium : (mention if size affects price)
+
             📈 Market trend : rising / stable / dropping
+
             ⚡ My advice : (1 sentence)
 
             ## Pricing Rules
