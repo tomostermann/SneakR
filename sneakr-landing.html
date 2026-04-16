@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SneakR — Expert en revente de sneakers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --ink: #1a1a1a;
+        --ink-mid: #3d3d3d;
+        --ink-muted: #6b6b6b;
+        --ink-faint: #ababab;
+        --paper: #f4f1eb;
+        --paper-off: #eceae3;
+        --rule: #d6d3cc;
+        --rule-dark: #1a1a1a;
+        --font-serif: "Playfair Display", Georgia, serif;
+        --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+        --font-mono: "IBM Plex Mono", monospace;
+        --r: 4px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 15px;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      .label {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        font-family: var(--font-mono);
+      }
+      hr {
+        height: 1px;
+        background: var(--rule);
+        border: none;
+      }
+
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--paper);
+        border-bottom: 1px solid var(--rule-dark);
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        padding: 0 2rem;
+        height: 52px;
+      }
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .nav-left a {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        text-decoration: none;
+        font-family: var(--font-mono);
+      }
+      .nav-left a:hover {
+        color: var(--ink);
+      }
+      .nav-logo {
+        font-family: var(--font-serif);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--ink);
+        text-decoration: none;
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;
+      }
+      .badge-discord {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid var(--rule-dark);
+        padding: 0.3rem 0.9rem;
+        border-radius: var(--r);
+        font-size: 11px;
+        font-family: var(--font-mono);
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        color: var(--ink);
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+      .badge-discord:hover {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .live-dot {
+        width: 6px;
+        height: 6px;
+        background: #3ba55c;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* HERO */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--rule-dark);
+        min-height: 88vh;
+      }
+      .hero-left {
+        padding: 3.5rem 3rem;
+        border-right: 1px solid var(--rule-dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .hero-right {
+        padding: 3.5rem 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: var(--ink);
+        color: var(--paper);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-right::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            rgba(255, 255, 255, 0.04) 39px,
+            rgba(255, 255, 255, 0.04) 40px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 39px,
+            rgba(255, 255, 255, 0.04) 39px,
+            rgba(255, 255, 255, 0.04) 40px
+          );
+      }
+      .hero-eyebrow {
+        margin-bottom: 2rem;
+      }
+      .hero-h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(3.2rem, 5.5vw, 5rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        margin-bottom: 2rem;
+      }
+      .hero-h1 em {
+        font-style: italic;
+        font-weight: 400;
+      }
+      .hero-sub {
+        font-size: 0.93rem;
+        font-weight: 300;
+        color: var(--ink-mid);
+        max-width: 380px;
+        line-height: 1.75;
+        margin-bottom: 2.5rem;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.65rem 1.5rem;
+        font-size: 0.78rem;
+        font-family: var(--font-mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: var(--r);
+        border: 1px solid var(--ink);
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+      .btn-fill {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .btn-fill:hover {
+        background: var(--ink-mid);
+      }
+      .btn-ghost {
+        color: var(--ink);
+        background: transparent;
+      }
+      .btn-ghost:hover {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .hero-stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-stat {
+        padding: 0 1.5rem 0 0;
+      }
+      .hero-stat + .hero-stat {
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+        padding-left: 1.5rem;
+      }
+      .hero-stat .num {
+        font-family: var(--font-serif);
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: var(--paper);
+        line-height: 1;
+        display: block;
+        margin-bottom: 0.3rem;
+      }
+      .hero-stat .desc {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-family: var(--font-mono);
+        letter-spacing: 0.06em;
+      }
+      .hero-right-top {
+        position: relative;
+        z-index: 1;
+        margin-bottom: auto;
+      }
+      .hero-right-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        margin-bottom: 1rem;
+      }
+      .hero-right-deck {
+        font-family: var(--font-serif);
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 400;
+        font-style: italic;
+        line-height: 1.25;
+        color: rgba(255, 255, 255, 0.7);
+        max-width: 340px;
+      }
+
+      /* HOW */
+      .section {
+        padding: 4.5rem 3rem;
+      }
+      .section-header {
+        margin-bottom: 3rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      .section-header h2 {
+        font-family: var(--font-serif);
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+      }
+      .section-header .sub {
+        font-size: 0.88rem;
+        color: var(--ink-muted);
+        margin-top: 0.6rem;
+        max-width: 500px;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+      .bento {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--rule-dark);
+        border-radius: var(--r);
+        overflow: hidden;
+      }
+      .bento-cell {
+        padding: 2rem 1.75rem;
+        border-right: 1px solid var(--rule-dark);
+        transition: background 0.2s;
+      }
+      .bento-cell:last-child {
+        border-right: none;
+      }
+      .bento-cell:hover {
+        background: var(--paper-off);
+      }
+      .step-index {
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.15em;
+        color: var(--ink-faint);
+        display: block;
+        margin-bottom: 1.5rem;
+      }
+      .bento-cell h3 {
+        font-family: var(--font-serif);
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+        line-height: 1.2;
+      }
+      .bento-cell p {
+        font-size: 0.8rem;
+        color: var(--ink-muted);
+        line-height: 1.65;
+        font-weight: 300;
+      }
+
+      /* FEATURES */
+      .features-section {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .features-section .section-header {
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+      }
+      .features-section .section-header h2 {
+        color: var(--paper);
+      }
+      .features-section .section-header .sub {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .feat-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--r);
+        overflow: hidden;
+      }
+      .feat {
+        background: var(--ink);
+        padding: 2.5rem 2rem;
+      }
+      .feat.span-col {
+        grid-row: span 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .feat-tag {
+        display: inline-block;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 0.2rem 0.65rem;
+        border-radius: 2px;
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.35);
+        margin-bottom: 1.25rem;
+      }
+      .feat h3 {
+        font-family: var(--font-sans);
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--paper);
+        margin-bottom: 0.55rem;
+        letter-spacing: 0.01em;
+      }
+      .feat p {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1.65;
+        font-weight: 300;
+      }
+      .feat-big-num {
+        font-family: var(--font-serif);
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--paper);
+        line-height: 1;
+        display: block;
+      }
+      .feat-big-label {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.3);
+        font-family: var(--font-mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 0.4rem;
+        display: block;
+      }
+
+      /* KPIs */
+      .kpi-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border: 1px solid var(--rule-dark);
+        border-radius: var(--r);
+        overflow: hidden;
+      }
+      .kpi {
+        padding: 2.5rem 2rem;
+        border-right: 1px solid var(--rule-dark);
+        transition: background 0.2s;
+      }
+      .kpi:last-child {
+        border-right: none;
+      }
+      .kpi:hover {
+        background: var(--paper-off);
+      }
+      .kpi-val {
+        font-family: var(--font-serif);
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1;
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+      .kpi-name {
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-family: var(--font-mono);
+        color: var(--ink-muted);
+        display: block;
+        margin-bottom: 1rem;
+      }
+      .kpi p {
+        font-size: 0.8rem;
+        color: var(--ink-muted);
+        font-weight: 300;
+        line-height: 1.65;
+      }
+
+      /* ROI */
+      .roi-section {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .roi-section .section-header {
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+      }
+      .roi-section .section-header h2 {
+        color: var(--paper);
+      }
+      .roi-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--r);
+        overflow: hidden;
+      }
+      .roi-left {
+        padding: 3rem 2.5rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .roi-headline {
+        font-family: var(--font-serif);
+        font-size: 5rem;
+        font-weight: 700;
+        color: var(--paper);
+        line-height: 1;
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+      .roi-sub-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+        display: block;
+        margin-bottom: 2rem;
+      }
+      .roi-note {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.42);
+        font-weight: 300;
+        line-height: 1.75;
+        max-width: 300px;
+      }
+      table.roi-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+      }
+      table.roi-table thead tr {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      table.roi-table th {
+        padding: 1.1rem 1.5rem;
+        text-align: left;
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+        font-weight: 400;
+      }
+      table.roi-table td {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 300;
+      }
+      table.roi-table td:not(:first-child) {
+        text-align: right;
+      }
+      table.roi-table tr:last-child td {
+        border-bottom: none;
+        color: var(--paper);
+      }
+      .gain {
+        color: #7cb87c;
+        font-family: var(--font-mono);
+        font-weight: 400;
+      }
+
+      /* ETHICS */
+      .ethics-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule-dark);
+        border-radius: var(--r);
+        overflow: hidden;
+      }
+      .ethics-cell {
+        background: var(--paper);
+        padding: 2rem 2rem;
+        transition: background 0.2s;
+      }
+      .ethics-cell:hover {
+        background: var(--paper-off);
+      }
+      .ethics-cell h4 {
+        font-family: var(--font-sans);
+        font-size: 0.83rem;
+        font-weight: 500;
+        margin-bottom: 0.6rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .ethics-tag {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        background: var(--paper-off);
+        border: 1px solid var(--rule);
+        padding: 0.15rem 0.5rem;
+        border-radius: 2px;
+        color: var(--ink-muted);
+      }
+      .ethics-cell p {
+        font-size: 0.78rem;
+        color: var(--ink-muted);
+        font-weight: 300;
+        line-height: 1.7;
+      }
+
+      /* CTA */
+      .cta-strip {
+        border-top: 1px solid var(--rule-dark);
+        border-bottom: 1px solid var(--rule-dark);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        padding: 3.5rem 3rem;
+        gap: 2rem;
+      }
+      .cta-strip h2 {
+        font-family: var(--font-serif);
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        max-width: 520px;
+      }
+      .cta-strip h2 em {
+        font-style: italic;
+        font-weight: 400;
+      }
+      .btn-discord {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        background: #5865f2;
+        color: #fff;
+        padding: 0.75rem 1.75rem;
+        border-radius: var(--r);
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid #5865f2;
+        white-space: nowrap;
+        transition: background 0.15s;
+      }
+      .btn-discord:hover {
+        background: #4752c4;
+      }
+      .btn-discord svg {
+        width: 17px;
+        height: 17px;
+        fill: #fff;
+        flex-shrink: 0;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 1.75rem 3rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid var(--rule);
+      }
+      .footer-logo {
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      .footer-center {
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        text-align: right;
+      }
+
+      /* REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 960px) {
+        nav {
+          grid-template-columns: 1fr 1fr;
+          padding: 0 1.25rem;
+        }
+        .nav-left {
+          display: none;
+        }
+        .nav-logo {
+          text-align: left;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-right {
+          min-height: 320px;
+        }
+        .bento {
+          grid-template-columns: 1fr 1fr;
+        }
+        .bento-cell:nth-child(2) {
+          border-right: none;
+        }
+        .bento-cell:nth-child(3) {
+          border-top: 1px solid var(--rule-dark);
+        }
+        .bento-cell:nth-child(4) {
+          border-top: 1px solid var(--rule-dark);
+          border-right: none;
+        }
+        .feat-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .feat.span-col {
+          grid-row: span 1;
+        }
+        .kpi-row {
+          grid-template-columns: 1fr;
+        }
+        .kpi {
+          border-right: none;
+          border-bottom: 1px solid var(--rule-dark);
+        }
+        .kpi:last-child {
+          border-bottom: none;
+        }
+        .roi-layout {
+          grid-template-columns: 1fr;
+        }
+        .roi-left {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ethics-grid {
+          grid-template-columns: 1fr;
+        }
+        .cta-strip {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        footer {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+          text-align: center;
+        }
+        .section {
+          padding: 3rem 1.5rem;
+        }
+        .cta-strip {
+          padding: 2.5rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="#how">Fonctionnement</a>
+        <a href="#features">Fonctionnalités</a>
+        <a href="#roi">ROI</a>
+      </div>
+      <a href="#" class="nav-logo">SneakR</a>
+      <div class="nav-right">
+        <a href="#discord" class="badge-discord">
+          <span class="live-dot"></span>
+          Discord
+        </a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="label">Bot de revente — Discord</span>
+        </div>
+        <div>
+          <h1 class="hero-h1">
+            Le prix juste,<br /><em>dès la première<br />question.</em>
+          </h1>
+          <p class="hero-sub">
+            SneakR analyse le marché en temps réel et suggère un prix de revente
+            adapté à l'état et à la taille de votre paire. En moins de deux
+            minutes.
+          </p>
+          <div class="hero-actions">
+            <a href="#discord" class="btn btn-fill">Essayer SneakR</a>
+            <a href="#how" class="btn btn-ghost">Fonctionnement</a>
+          </div>
+        </div>
+        <div style="margin-top: 3rem">
+          <span class="label" style="display: block; margin-bottom: 0.5rem"
+            >Source de données</span
+          >
+          <span
+            style="
+              font-family: var(--font-mono);
+              font-size: 0.75rem;
+              color: var(--ink-muted);
+            "
+            >StockX FR — Prix en temps réel</span
+          >
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-right-top">
+          <div class="hero-right-label">Positionnement</div>
+          <p class="hero-right-deck">
+            "Pas une estimation approximative. Un prix de marché, ajusté à la
+            réalité de votre paire."
+          </p>
+        </div>
+        <div class="hero-stat-row">
+          <div class="hero-stat">
+            <span class="num"
+              >&lt;3<span style="font-size: 1.3rem; font-weight: 300"
+                >min</span
+              ></span
+            >
+            <span class="desc">Résolution</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num"
+              >&lt;10<span style="font-size: 1.3rem; font-weight: 300"
+                >s</span
+              ></span
+            >
+            <span class="desc">Réponse</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">10€</span>
+            <span class="desc">Écart max</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="how">
+      <div class="section-header reveal">
+        <span class="label">Fonctionnement</span>
+        <h2>Quatre étapes,<br />un prix précis.</h2>
+        <p class="sub">
+          SneakR guide le vendeur à travers un dialogue structuré pour produire
+          une fourchette de revente fiable — maximum 10 € d'écart.
+        </p>
+      </div>
+      <div class="bento reveal">
+        <div class="bento-cell">
+          <span class="step-index">01 / 04</span>
+          <h3>Modèle & colorway</h3>
+          <p>
+            Identifiez votre paire avec précision. SneakR interroge les données
+            StockX FR en temps réel pour retrouver les prix de vente actuels.
+          </p>
+        </div>
+        <div class="bento-cell">
+          <span class="step-index">02 / 04</span>
+          <h3>Taille (EU)</h3>
+          <p>
+            La pointure influe directement sur le prix. Les tailles hors norme
+            bénéficient d'une prime intégrée automatiquement dans l'estimation.
+          </p>
+        </div>
+        <div class="bento-cell">
+          <span class="step-index">03 / 04</span>
+          <h3>État de la paire</h3>
+          <p>
+            Une échelle en 6 niveaux, de Deadstock à Beater. Chaque niveau
+            applique une dépréciation précise au prix de base.
+          </p>
+        </div>
+        <div class="bento-cell">
+          <span class="step-index">04 / 04</span>
+          <h3>Prix & conseil</h3>
+          <p>
+            Une fourchette serrée, la tendance marché (hausse / stable / baisse)
+            et un conseil de vente en une seule réponse structurée.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section class="section features-section" id="features">
+      <div class="section-header reveal">
+        <span class="label" style="color: rgba(255, 255, 255, 0.28)"
+          >Fonctionnalités</span
+        >
+        <h2>Conçu pour<br />les vrais revendeurs.</h2>
+        <p class="sub">
+          SneakR maîtrise le vocabulaire du marché : DS, VNDS, deadstock, hype,
+          grail. Un expert disponible 24h/24.
+        </p>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat span-col">
+          <div>
+            <span class="feat-tag">Données live</span>
+            <h3>StockX France — temps réel</h3>
+            <p>
+              Chaque estimation s'appuie sur les prix de vente réels du moment.
+              Prix min, max et moyen, volume des 15 et 30 derniers jours,
+              tailles disponibles.
+            </p>
+          </div>
+          <div style="margin-top: 3rem">
+            <span class="feat-big-num">10€</span>
+            <span class="feat-big-label">Écart max dans la fourchette</span>
+          </div>
+        </div>
+        <div class="feat">
+          <span class="feat-tag">Précision</span>
+          <h3>Fourchette serrée</h3>
+          <p>
+            Maximum 10 € entre le bas et le haut. Fini les estimations larges
+            inutilisables.
+          </p>
+        </div>
+        <div class="feat">
+          <span class="feat-tag">Taille</span>
+          <h3>Prime sur pointures rares</h3>
+          <p>
+            Tailles hors 40–44 EU : ajustement automatique intégré dans le
+            calcul final.
+          </p>
+        </div>
+        <div class="feat">
+          <span class="feat-tag">Conformité</span>
+          <h3>RGPD — données minimisées</h3>
+          <p>
+            Consentement explicite, données anonymisées, politique accessible à
+            chaque étape.
+          </p>
+        </div>
+        <div class="feat">
+          <span class="feat-tag">Déploiement</span>
+          <h3>Natif Discord</h3>
+          <p>
+            Aucune application tierce, aucune inscription. Accès immédiat depuis
+            votre serveur.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kpis">
+      <div class="section-header reveal">
+        <span class="label">Performance</span>
+        <h2>Des objectifs<br />mesurables.</h2>
+      </div>
+      <div class="kpi-row reveal">
+        <div class="kpi">
+          <span class="kpi-val"
+            >&lt;3<span style="font-size: 1.8rem; font-weight: 300"
+              >min</span
+            ></span
+          >
+          <span class="kpi-name">Taux de résolution</span>
+          <p>
+            Un prix suggéré en moins de deux minutes dès l'ouverture de la
+            conversation. La mise en vente n'est jamais bloquée.
+          </p>
+        </div>
+        <div class="kpi">
+          <span class="kpi-val"
+            >&lt;10<span style="font-size: 1.8rem; font-weight: 300"
+              >s</span
+            ></span
+          >
+          <span class="kpi-name">Temps de réponse</span>
+          <p>
+            Chaque message est traité et retourné en moins de cinq secondes pour
+            un flux conversationnel naturel.
+          </p>
+        </div>
+        <div class="kpi">
+          <span class="kpi-val"
+            >3<span style="font-size: 1.8rem; font-weight: 300">%</span></span
+          >
+          <span class="kpi-name">Commission plateforme</span>
+          <p>
+            Minimum 3 € par transaction. Le vendeur fixe son prix, l'acheteur
+            règle la commission en supplément.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section roi-section" id="roi">
+      <div class="section-header reveal">
+        <span class="label" style="color: rgba(255, 255, 255, 0.28)"
+          >Valeur business</span
+        >
+        <h2>Un retour sur<br />investissement documenté.</h2>
+      </div>
+      <div class="roi-layout reveal">
+        <div class="roi-left">
+          <div>
+            <span class="roi-headline">+€5.4M</span>
+            <span class="roi-sub-label">Gain annuel estimé</span>
+          </div>
+          <p class="roi-note">
+            En générant +15 % de volume de transactions grâce à des prix plus
+            compétitifs, SneakR fait passer le revenu annuel de €36M à €41,4M.
+          </p>
+        </div>
+        <div>
+          <table class="roi-table">
+            <thead>
+              <tr>
+                <th>Indicateur</th>
+                <th>Sans SneakR</th>
+                <th>Avec SneakR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ventes / mois</td>
+                <td>500 000</td>
+                <td>575 000</td>
+              </tr>
+              <tr>
+                <td>Revenu mensuel</td>
+                <td>€3 000 000</td>
+                <td>€3 450 000</td>
+              </tr>
+              <tr>
+                <td>Revenu annuel</td>
+                <td>€36 000 000</td>
+                <td>€41 400 000</td>
+              </tr>
+              <tr>
+                <td>Gain annuel</td>
+                <td>—</td>
+                <td class="gain">+ €5 400 000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ethique">
+      <div class="section-header reveal">
+        <span class="label">Éthique & responsabilité</span>
+        <h2>Une IA<br />transparente.</h2>
+        <p class="sub">
+          SneakR est conçu pour assister, jamais pour remplacer le jugement de
+          l'utilisateur.
+        </p>
+      </div>
+      <div class="ethics-grid reveal">
+        <div class="ethics-cell">
+          <h4>Effet ELIZA <span class="ethics-tag">Transparence</span></h4>
+          <p>
+            SneakR communique clairement sa nature algorithmique. Les
+            suggestions sont présentées comme des fourchettes de marché, jamais
+            comme des verdicts d'expert humain.
+          </p>
+        </div>
+        <div class="ethics-cell">
+          <h4>
+            Dépendance utilisateur <span class="ethics-tag">Pédagogie</span>
+          </h4>
+          <p>
+            Chaque suggestion inclut une brève explication du raisonnement.
+            L'objectif : que l'utilisateur développe sa propre expertise au fil
+            des échanges.
+          </p>
+        </div>
+        <div class="ethics-cell">
+          <h4>Neutralité du bot <span class="ethics-tag">UX</span></h4>
+          <p>
+            Pas de persona humaine. Langage neutre, factuel, centré sur la
+            donnée — pour éviter tout biais d'attachement émotionnel aux
+            estimations.
+          </p>
+        </div>
+        <div class="ethics-cell">
+          <h4>Vie privée & RGPD <span class="ethics-tag">Conformité</span></h4>
+          <p>
+            Consentement explicite, minimisation des données collectées,
+            anonymisation systématique des jeux d'entraînement. Politique
+            accessible à chaque étape.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-strip" id="discord">
+      <h2>Obtenez votre estimation<br /><em>en moins de deux minutes.</em></h2>
+      <a
+        href="https://discord.com/oauth2/authorize?client_id=1493227814281941082&permissions=274877974528&integration_type=0&scope=bot"
+        class="btn-discord"
+      >
+        <svg viewBox="0 0 127.14 96.36">
+          <path
+            d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"
+          />
+        </svg>
+        Rejoindre SneakR sur Discord
+      </a>
+    </div>
+
+    <footer>
+      <span class="footer-logo">SneakR</span>
+      <span class="footer-center">Données StockX FR — Temps réel</span>
+    </footer>
+
+    <script>
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("in");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+    </script>
+  </body>
+</html>
