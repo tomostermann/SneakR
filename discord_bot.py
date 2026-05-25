@@ -2,8 +2,6 @@
 from bot import envoyer_message
 import discord
 
-TOKEN = "REDACTED"
-
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
