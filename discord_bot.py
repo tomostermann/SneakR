@@ -20,5 +20,3 @@ async def on_message(message):
     
     await message.channel.send(reply)
 
-client.run(TOKEN)
-
