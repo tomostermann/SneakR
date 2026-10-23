@@ -14,10 +14,6 @@ Reselling shoes is easy with many websites these days. But a chatbot that can as
 
 Our chatbot, SneakR, makes it easy for all retailers to sell their shoes at fair and reasonable prices. SneakR uses the retail price of the shoes chosen by the customer as a starting point and recommends a price that reflects the shoes' condition by asking various questions about wear and tear. SneakR is a chatbot that advises on the right price to help you sell your shoes as easily as possible at the best price.
 
-### 🔗 Value Chain
-
-![alt text](value_chain.png)
-
 ## ⚖️ Ethical Impact Assessment
 
 ### 🙁 ELIZA Effect
