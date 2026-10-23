@@ -72,6 +72,20 @@ By helping sellers set fairer and more competitive prices, the chatbot generates
 
 The gap between the two scenarios represents a net gain of €450,000 per month, or €5,400,000 in additional revenue per year — driven entirely by the increase in transaction volume enabled by the chatbot. This gain is fully attributable to the improved pricing quality that SneakR provides, making listings more attractive and accelerating sales.
 
+## ⚙️ How it works
+
+1. The user describes their sneakers in the chat
+2. Llama 3.1 8B extracts the model name and colorway from the message
+3. Live StockX FR market data is fetched from the KicksDB API
+4. This data is injected into the system prompt, and the LLM
+   suggests a price adjusted for condition (1–6 scale) and size
+
+## 🛠️ Stack
+
+- Python + requests
+- Llama 3.1 8B Instruct, run locally with LM Studio
+- KicksDB API (StockX market data)
+
 ### 📖 Summary
 
 | Indicator       | Without SneakR | With SneakR  |
